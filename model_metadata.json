@@ -1,0 +1,72 @@
+{
+  "model_name": "Depression Detection BiLSTM",
+  "model_type": "Bidirectional LSTM with Attention",
+  "created_date": "2026-04-17 15:07:48",
+  "framework": "TensorFlow/Keras",
+  "input_format": "Text (raw string)",
+  "output_format": "Binary classification (0 or 1)",
+  "training_data": {
+    "dataset": "balanced_20k.csv",
+    "total_samples": 20000,
+    "train_samples": 12800,
+    "val_samples": 3200,
+    "test_samples": 4000,
+    "class_balance": "50-50 (perfectly balanced)"
+  },
+  "model_architecture": {
+    "embedding_dim": 128,
+    "vocab_size": 10000,
+    "max_sequence_length": 300,
+    "lstm_units": [
+      100,
+      50
+    ],
+    "dense_units": [
+      64,
+      32
+    ],
+    "dropout_rate": 0.3,
+    "l2_regularization": 0.001,
+    "total_parameters": 1572177
+  },
+  "performance_metrics": {
+    "accuracy": 0.9020000100135803,
+    "precision": 0.8732590675354004,
+    "recall": 0.940500020980835,
+    "f1_score": 0.9056330923518261,
+    "auc_roc": 0.9693858623504639,
+    "sensitivity": 0.9405,
+    "specificity": 0.8635
+  },
+  "training_config": {
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "loss_function": "Binary Crossentropy",
+    "batch_size": 32,
+    "epochs_trained": 8,
+    "early_stopping": true,
+    "learning_rate_reduction": true
+  },
+  "inference_config": {
+    "preprocessing_steps": [
+      "URL removal",
+      "Email removal",
+      "Mention removal",
+      "Emoji removal",
+      "HTML entity handling",
+      "Lowercase conversion",
+      "Punctuation removal",
+      "Single-char word removal"
+    ],
+    "classification_threshold": 0.5,
+    "output_classes": {
+      "0": "No Depression",
+      "1": "Depression"
+    }
+  },
+  "files": {
+    "model": "depression_detection_model.keras",
+    "tokenizer": "tokenizer.pkl",
+    "metadata": "model_metadata.json"
+  }
+}

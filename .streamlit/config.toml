@@ -1,0 +1,16 @@
+[client]
+showErrorDetails = true
+maxMessageSize = 200
+
+[logger]
+level = "info"
+
+[logWriter]
+messageFormat = "%(asctime)s.%(msecs)03d [%(levelname)s] %(name)s: %(message)s"
+
+[server]
+maxUploadSize = 200
+enableXsrfProtection = true
+port = 8501
+headless = true
+runOnSave = true
